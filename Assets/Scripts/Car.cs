@@ -23,19 +23,18 @@ Runtime Method Resolution:
 
 At runtime, when a Car reference points to a derived class (e.g., SolarCar), the most specific implementation of Move() is executed, demonstrating runtime polymorphism.
 */
+// Base class (Parent) for all types of cars, demonstrating inheritance
 [Serializable]
 public class Car
 {
+    #region Inheritance
     // Common properties shared by all types of cars
+    // These shared properties ensure that derived classes inherit them without duplication
     public string BrandName; // Shared attribute for car branding
     public float TopSpeed; // Shared maximum speed for all cars
     public float Acceleration; // Shared acceleration rate for all cars
     public float MaxFuel; // Shared maximum fuel capacity for all cars
     public float FuelConsumtion; // Shared fuel consumption rate for all cars
-
-    // Protected fields allow derived classes to access and modify while encapsulating from external access
-    [ShowInInspector] protected float currentSpeed; // Tracks the car's current speed
-    [ShowInInspector] protected float currentFuel; // Tracks the car's current fuel level
 
     // Constructor to initialize shared properties for all types of cars
     public Car(string brandName, float speed, float acceleration, float maxFuel, float fuelConsumtion)
@@ -47,7 +46,40 @@ public class Car
         this.FuelConsumtion = fuelConsumtion; // Sets the fuel consumption rate
         currentFuel = this.MaxFuel; // Initializes the car's fuel tank to maximum capacity
     }
+    #endregion
 
+    #region Encapsulation
+    // Protected fields allow derived classes to access and modify while encapsulating from external access
+    // These fields are hidden from outside modification but can be accessed by subclasses
+    [ShowInInspector] protected float currentSpeed; // Tracks the car's current speed
+    [ShowInInspector] protected float currentFuel; // Tracks the car's current fuel level
+
+    // Getter method to retrieve the current fuel level, supporting encapsulation
+    public float GetCurrentFuel()
+    {
+        return currentFuel; // Returns the car's current fuel level
+    }
+
+    // Getter method to retrieve the current speed, supporting encapsulation
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed; // Returns the car's current speed
+    }
+
+    // Method for refueling the car, shared by all types of cars
+    public void Refuel()
+    {
+        currentFuel = MaxFuel; // Refills the fuel tank to its maximum capacity
+    }
+
+    // Method to check if the car is out of fuel, reusable by all derived classes
+    public bool IsOutOfFuel()
+    {
+        return currentFuel <= 0; // Returns true if the car has no fuel left
+    }
+    #endregion
+
+    #region Polymorphism
     // Virtual method that can be overridden by derived classes, demonstrating polymorphism
     public virtual void Move()
     {
@@ -64,28 +96,5 @@ public class Car
             currentFuel -= FuelConsumtion * Time.deltaTime;
         }
     }
-
-    // Method for refueling the car, shared by all types of cars
-    public void Refuel()
-    {
-        currentFuel = MaxFuel; // Refills the fuel tank to its maximum capacity
-    }
-
-    // Getter method to retrieve the current fuel level, supporting encapsulation
-    public float GetCurrentFuel()
-    {
-        return currentFuel; // Returns the car's current fuel level
-    }
-
-    // Getter method to retrieve the current speed, supporting encapsulation
-    public float GetCurrentSpeed()
-    {
-        return currentSpeed; // Returns the car's current speed
-    }
-
-    // Method to check if the car is out of fuel, reusable by all derived classes
-    public bool IsOutOfFuel()
-    {
-        return currentFuel <= 0; // Returns true if the car has no fuel left
-    }
+    #endregion
 }

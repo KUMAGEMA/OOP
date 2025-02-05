@@ -26,6 +26,7 @@ Polymorphism: Enables flexible behavior, allowing the system to handle all Car o
 [Serializable]
 public class SolarCar : Car
 {
+    #region Inheritance
     // Property specific to SolarCar, representing how quickly the battery recharges
     private float chargeRate;
 
@@ -35,7 +36,9 @@ public class SolarCar : Car
     {
         this.chargeRate = chargeRate; // Assigns the solar-specific property
     }
+    #endregion
 
+    #region Polymorphism
     // Overrides the virtual Move method in the base class "Car"
     public override void Move()
     {
@@ -64,4 +67,5 @@ public class SolarCar : Car
         // Logs the recharge status, highlighting the SolarCar-specific behavior
         Debug.Log(BrandName + " is recharging. Battery: " + currentFuel);
     }
+    #endregion
 }

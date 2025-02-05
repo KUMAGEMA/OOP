@@ -42,11 +42,16 @@ public class CarInstance : MonoBehaviour
     public float RechargeRate; // Specific to SolarCar (handled using Odin Inspector for conditional visibility)
     #endregion
 
+    #region Polymorphic Reference
     [ReadOnly] public Car Car; // Polymorphic reference to a base Car object (can hold any derived type)
+    #endregion
 
+    #region Dependency Injection
     // Dependency: Handles AI behavior
     private CarAI ai;
+    #endregion
 
+    #region Initialization
     void Start()
     {
         ai = GetComponent<CarAI>(); // Gets the CarAI component for navigation
@@ -77,13 +82,16 @@ public class CarInstance : MonoBehaviour
             ai.SetCar(Car);
         }
     }
+    #endregion
 
+    #region Update Loop
     private void Update()
     {
         // Call the Move method polymorphically (runtime behavior depends on the actual Car type)
         Car.Move();
         UpdateUI(); // Update the car's UI
     }
+    #endregion
 
     #region View
     [FoldoutGroup("View", false)] public UIManager UIManager; // Reference to the UIManager for managing UI

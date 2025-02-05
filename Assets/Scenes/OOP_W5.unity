@@ -2068,7 +2068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3281202767686496452, guid: d5b19bcabab17d0438b262266bbc38fb, type: 3}
       propertyPath: m_Name
-      value: Car_2
+      value: Car_Tesla
       objectReference: {fileID: 0}
     - target: {fileID: 5462333474977845372, guid: d5b19bcabab17d0438b262266bbc38fb, type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -2105,11 +2105,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1253815262741770878, guid: d99b520b81872ab43b6253b689749ddc, type: 3}
       propertyPath: m_Name
-      value: Car_1
+      value: Car_Honda
       objectReference: {fileID: 0}
     - target: {fileID: 3043032129734392354, guid: d99b520b81872ab43b6253b689749ddc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.18
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 3043032129734392354, guid: d99b520b81872ab43b6253b689749ddc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2150,6 +2150,10 @@ PrefabInstance:
     - target: {fileID: 3160506099442240900, guid: d99b520b81872ab43b6253b689749ddc, type: 3}
       propertyPath: m_Radius
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258886018163782336, guid: d99b520b81872ab43b6253b689749ddc, type: 3}
+      propertyPath: CarType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7258886018163782336, guid: d99b520b81872ab43b6253b689749ddc, type: 3}
       propertyPath: UIManager
